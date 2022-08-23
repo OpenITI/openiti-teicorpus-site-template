@@ -2,6 +2,17 @@ const basePath = process.env.BASEPATH
 const title = "OpenITI TEI Corpus Template"
 const htmlTitle = title
 
+// Determined remote TEI files to process
+const sitemap = require("./static/sitemap.json")
+const remotes = sitemap.authors.map(a => a.books.map(b => b.files.map(f => ({
+    resolve: "gatsby-source-remote-file",
+    options: {
+      url: f.url,
+      name: f.url.split('/').at(-1).replace(/\.xml$/, "")
+    }
+  })
+))).flat(3)
+
 module.exports = {
   pathPrefix: basePath,
   siteMetadata: {
@@ -16,6 +27,7 @@ module.exports = {
     ]
   },
   plugins: [
+    ...remotes,
     `gatsby-plugin-emotion`,
     `gatsby-plugin-material-ui`,
     {
@@ -35,12 +47,6 @@ module.exports = {
       resolve: `gatsby-source-filesystem`,
       options: {
         path: `${__dirname}/src/images/`,
-      },
-    },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        path: `static/tei`,
       },
     },
     `gatsby-transformer-json`,

@@ -4,9 +4,7 @@ This template is used by the TEI conversion process to generate human-readable v
 
 ## How to setup the template
 
-To use the template, TEI documents must be added under `static/tei`.
-
-Provide metadata for the TOC and more via a `/static/sitemap.json` structured like this:
+To use the template, provide metadata for the TOC and online TEI file locations via a `/static/sitemap.json` structured like this:
 
 ```json
 {
@@ -23,12 +21,12 @@ Provide metadata for the TOC and more via a `/static/sitemap.json` structured li
             {
               "title": "Shamela",
               "version": "URI",
-              "file": "0562Samcani.Tahbir.Shamela0001694-ara1.completed"
+              "url": "https://raw.githubusercontent.com/OpenITI/0575AH/tei/data/0562Samcani/0562Samcani.Tahbir/0562Samcani.Tahbir.Shamela0001694-ara1.completed.xml"
             },
             {
               "title": "JK001322",
               "version": "URI",
-              "file": "0562Samcani.Tahbir.JK001322-ara1"
+              "url": "https://raw.githubusercontent.com/OpenITI/0575AH/master/data/0562Samcani/0562Samcani.Tahbir/0562Samcani.Tahbir.JK001322-ara1.xml"
             }
           ]
         }

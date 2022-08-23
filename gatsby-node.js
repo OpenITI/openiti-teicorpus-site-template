@@ -14,7 +14,7 @@ const makeToc = async (createPage, reporter, graphql) => {
           books {
             id
             files {
-              file
+              url
               title
               version
             }

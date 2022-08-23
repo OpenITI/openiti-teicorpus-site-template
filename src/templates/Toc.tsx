@@ -63,16 +63,19 @@ export default function Introduction({pageContext}: Props) {
                   {b.title}
                 </Typography>
                 <List>
-                  {b.files.map(f => (
-                    <ListItem dense key={f.title} secondaryAction={<Box sx={{paddingRight: "40px"}}>
-                      <IconButton onClick={() => navigate(f.url)}><TeiLogo style={{width: "40px", height: "40px"}}/></IconButton>
-                      <IconButton onClick={() => navigate(`https://raw.githubusercontent.com/OpenITI/${pageContext.group}/master/data/${a.id}/${b.id}/${f.file}`)} sx={{width: "40px", height: "40px"}}>MD</IconButton>
-                    </Box>}>
-                      <ListItemButton onClick={() => navigate((f.url.split('/').at(-1) || "").replace(/\.xml$/, ""))}>
-                        <ListItemText primary={f.title} secondary={f.version}/>
-                      </ListItemButton>
-                    </ListItem>
-                  ))}
+                  {b.files.map(f => {
+                    const filename = f.url.split('/').at(-1) || ""
+                    return (
+                      <ListItem dense key={f.title} secondaryAction={<Box sx={{paddingRight: "40px"}}>
+                        <IconButton onClick={() => navigate(f.url)}><TeiLogo style={{width: "40px", height: "40px"}}/></IconButton>
+                        <IconButton onClick={() => navigate(`https://raw.githubusercontent.com/OpenITI/${pageContext.group}/master/data/${a.id}/${b.id}/${filename}`)} sx={{width: "40px", height: "40px"}}>MD</IconButton>
+                      </Box>}>
+                        <ListItemButton onClick={() => navigate(filename.replace(/\.xml$/, ""))}>
+                          <ListItemText primary={f.title} secondary={f.version}/>
+                        </ListItemButton>
+                      </ListItem>
+                    )
+                  })}
                 </List>
               </div>))}
             </div>))

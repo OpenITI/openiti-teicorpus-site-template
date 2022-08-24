@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+
+    <head>
+        <title>{title} | OpenITI TEI Corpus</title>
+        <meta charset="utf-8">
+        <link rel="preconnect" href="https://fonts.googleapis.com"> 
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="../assets/css/style.css" media="all" />
+        <link href="https://fonts.googleapis.com/css2?family=Amiri&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Fira+Sans:400,400i,600,600i" rel="stylesheet">
+        <link rel="stylesheet" href="../assets/css/CETEIcean.css" media="all" />
+        <link rel="stylesheet" href="../assets/css/CETEIext.css" media="all" />
+        <script src="../assets/js/CETEI.js"></script>
+        <meta name="description" content="OpenITI TEI Corpus">
+        <meta property="og:title" content="{title} | OpenITI TEI Corpus">
+        <meta property="og:description" content="OpenITI TEI Corpus">
+        <meta property="og:type" content="website">
+    </head>
+
+    <body>
+
+        <div style="outline:none" tabindex="-1" id="wrapper">
+            <header>
+                <div class="banner">
+                    <div class="banner-root">
+                        <div class="banner-title">
+                            <a href="https://openiti.org">
+                                <img src="../assets/images/logo.png"
+                                    alt="OpenITI logo" width="200"/>
+                            </a>
+                            <h1>Open Islamicate Texts Initiative</h1>
+                        </div>
+                    </div>
+                </div>
+                <div class="nav-wrapper">
+                    <nav>
+                        <div class="nav-container">
+                            <a tabindex="0" href="..">Table of Contents</a>
+                        </div>
+                    </nav>
+                </div>
+            </header>
+            <div class="main-wrapper">
+                <main>
+                  <div id="TEI">                    
+                    <div class="lds-dual-ring"></div>
+                    <div>Downloading TEI data. This may take a several seconds for larger files.</div>
+                  </div>
+              
+                  <script>
+                    var c = new CETEI();
+                    c.addBehaviors({"tei":{
+                      "teiHeader": []
+                    }});
+                    c.getHTML5("{tei_filename}", function(data) {
+                      document.getElementById("TEI").replaceChildren(data)
+                    });
+                  </script>
+                </main>
+            </div>
+            <footer>
+                <div class="footer-wrapper">
+                    <div class="footer-grid">
+                        <div class="footer-item1"><a rel="license"
+                                href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img
+                                    alt="Creative Commons License"
+                                    src="http://i.creativecommons.org/l/by-nc-sa/3.0/88x31.png"
+                            /></a><br/>This work is licensed under a<!-- -->
+                            <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/"
+                                >Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International
+                                License</a>.</div>
+                        <div class="footer-item2">
+                            <a href="https://openiti.org">
+                                <img src="../assets/images/logo.png"
+                                    alt="OpenITI logo" width="100"/>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+
+    </body>
+</html>
